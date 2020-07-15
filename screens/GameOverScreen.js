@@ -10,7 +10,12 @@ const GameOverScreen = (props) => {
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
         <Image
-          source={require("../assets/success.png")}
+          fadeDuration={1000} //default is 300ms
+          // source={require("../assets/success.png")}
+          source={{
+            uri:
+              "https://cdn.pixabay.com/photo/2017/08/08/00/12/nature-2609489_960_720.jpg",
+          }}
           style={styles.image}
           resizeMode="cover" //default is "cover"
         />
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   image: {
-    width: "100%",
+    width: "100%", //width and height is required for web images
     height: "100%",
   },
 });
