@@ -120,8 +120,9 @@ const styles = StyleSheet.create({
     // fontWeight: "bold", //only supported on android
   },
   inputContainer: {
-    width: 450,
-    maxWidth: "90%",
+    width: "80%",
+    maxWidth: "95%",
+    minWidth: 300,
     alignItems: "center",
   },
   buttonContainer: {
