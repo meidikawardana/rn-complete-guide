@@ -51,7 +51,7 @@ const GameScreen = (props) => {
   useEffect(() => {
     const updateLayout = () => {
       setAvailableDeviceWidth(Dimensions.get("window").width);
-      setAvailableDeviceWidth(Dimensions.get("window").height);
+      setAvailableDeviceHeight(Dimensions.get("window").height);
     };
 
     Dimensions.addEventListener("change", updateLayout);
