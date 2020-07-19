@@ -102,10 +102,10 @@ const GameScreen = (props) => {
     <React.Fragment>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card
-        style={[
-          ...[styles.buttonContainer],
-          { marginTop: availableDeviceHeight > 600 ? 20 : 5 },
-        ]}
+        style={{
+          ...styles.buttonContainer,
+          ...{ marginTop: availableDeviceHeight > 600 ? 20 : 5 },
+        }}
       >
         <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
           <Ionicons name="md-remove" size={24} color="white" />
@@ -118,6 +118,7 @@ const GameScreen = (props) => {
   );
 
   if (availableDeviceHeight < 500) {
+    console.log("availableHeight < 500");
     gameControls = (
       <View style={styles.controls}>
         <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
@@ -129,6 +130,8 @@ const GameScreen = (props) => {
         </MainButton>
       </View>
     );
+  } else {
+    console.log("availableHeight >= 500");
   }
 
   return (
@@ -161,6 +164,7 @@ const styles = StyleSheet.create({
     width: 400,
     maxWidth: "90%",
     alignItems: "center",
+    backgroundColor: "red",
   },
   listItem: {
     borderColor: "#ccc",
@@ -177,7 +181,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     width: "80%",
-    // backgroundColor: "red",
   },
   listContainer: {
     flex: 1,

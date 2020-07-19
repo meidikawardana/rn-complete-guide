@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -14,11 +14,41 @@ import Colors from "../constants/colors";
 import MainButton from "../components/MainButton";
 
 const GameOverScreen = (props) => {
+  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
+    Dimensions.get("window").width
+  );
+  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(
+    Dimensions.get("window").height
+  );
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setAvailableDeviceWidth(Dimensions.get("window").width);
+      setAvailableDeviceHeight(Dimensions.get("window").height);
+    };
+
+    Dimensions.addEventListener("change", updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  });
+
   return (
     <ScrollView>
       <View style={styles.screen}>
         <TitleText>The Game is Over!</TitleText>
-        <View style={styles.imageContainer}>
+        <View
+          style={{
+            ...styles.imageContainer,
+            ...{
+              width: availableDeviceWidth * 0.7,
+              height: availableDeviceWidth * 0.7,
+              borderRadius: (availableDeviceWidth * 0.7) / 2,
+              marginVertical: availableDeviceHeight / 30,
+            },
+          }}
+        >
           <Image
             fadeDuration={1000} //default is 300ms
             source={require("../assets/success.png")}
@@ -30,8 +60,22 @@ const GameOverScreen = (props) => {
             resizeMode="cover" //default is "cover"
           />
         </View>
-        <View style={styles.resultContainer}>
-          <BodyText style={styles.resultText}>
+        <View
+          style={{
+            ...styles.resultContainer,
+            ...{
+              marginVertical: availableDeviceHeight / 60,
+            },
+          }}
+        >
+          <BodyText
+            style={{
+              ...styles.resultText,
+              ...{
+                fontSize: availableDeviceHeight < 400 ? 16 : 20,
+              },
+            }}
+          >
             Your phone needed{" "}
             <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to
             guess the number{" "}
