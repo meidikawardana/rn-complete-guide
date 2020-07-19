@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
@@ -34,6 +35,8 @@ const renderListItem = (listLength, itemData) => (
 );
 
 const GameScreen = (props) => {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+
   const initialGuess = generateRandomBetween(1, 100, props.userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
     width: 400,
     maxWidth: "90%",
     alignItems: "center",
-    backgroundColor: "red",
+    // backgroundColor: "red",
   },
   listItem: {
     borderColor: "#ccc",
