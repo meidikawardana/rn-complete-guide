@@ -103,7 +103,7 @@ const GameScreen = (props) => {
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card
         style={[
-          styles.buttonContainer,
+          ...[styles.buttonContainer],
           { marginTop: availableDeviceHeight > 600 ? 20 : 5 },
         ]}
       >
@@ -118,7 +118,7 @@ const GameScreen = (props) => {
   );
 
   if (availableDeviceHeight < 500) {
-    return (
+    gameControls = (
       <View style={styles.controls}>
         <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
           <Ionicons name="md-remove" size={24} color="white" />
