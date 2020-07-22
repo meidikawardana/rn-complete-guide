@@ -12,8 +12,11 @@ import BodyText from "../components/BodyText";
 import TitleText from "../components/TitleText";
 import Colors from "../constants/colors";
 import MainButton from "../components/MainButton";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const GameOverScreen = (props) => {
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.DEFAULT);
+
   const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
     Dimensions.get("window").width
   );
