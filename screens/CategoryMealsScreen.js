@@ -11,6 +11,13 @@ const CategoryMealsScreen = (props) => {
           props.navigation.navigate("MealDetail");
         }}
       />
+      <View style={{ marginVertical: 5 }} />
+      <Button
+        title="Go Back"
+        onPress={() => {
+          props.navigation.goBack(); //or pop(). pop() will only works on StackNavigator
+        }}
+      />
     </View>
   );
 };
