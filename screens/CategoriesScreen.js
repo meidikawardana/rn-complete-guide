@@ -2,8 +2,6 @@ import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
 const CategoriesScreen = (props) => {
-  console.log(props);
-
   return (
     <View style={styles.screen}>
       <Text style={{ marginBottom: 10 }}>The Categories Screen!</Text>
